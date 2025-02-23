@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&family=Inter:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Jogo do Número Secreto</title>
+</head>
+<body>
+    <div class="container">
+        <div class="container__conteudo">
+            <img src="./img/robot.png" alt="robô mergulhador" class="container__imagem-robo" />
+            <div class="container__informacoes">
+                <!-- Tela Inicial -->
+                <!-- Dentro da div container__informacoes -->
+                <div id="start-screen">
+                    <h1>Número Secreto</h1>
+                    <h2>Escolha a Dificuldade</h2>
+                    <!-- Adicionar no start-screen, após os botões de dificuldade -->
+                    <div class="difficulty">
+                        <button onclick="setDifficulty('easy')" class="container__botao">Fácil (1-100)</button>
+                        <button onclick="setDifficulty('medium')" class="container__botao">Médio (1-1000)</button>
+                        <button onclick="setDifficulty('hard')" class="container__botao">Difícil (1-5000)</button>
+                    </div>
+                    <button onclick="iniciarModoTempo()" class="container__botao container__botao--tempo">Modo Contra o Tempo ⏱️</button>
+                    <button onclick="showHighScores()" class="container__botao">Ver Recordes</button>
+                </div>
+
+                <!-- Tela do Jogo -->
+                <div id="game-screen" style="display: none;">
+                    <div class="game-header">
+                        <div class="game-stats">
+                            <p>Tentativas: <span id="attempts">0</span></p>
+                            <p>Tempo: <span id="timer">0:00</span></p>
+                        </div>
+                    </div>
+                    <!-- Adicionar dentro da div game-screen, após o game-message -->
+                    <h2 id="game-message">Escolha um número</h2>
+                    <div class="progress-container">
+                        <div id="progress-bar"></div>
+                        <span class="temperature-text">Frio</span>
+                    </div>
+                    <!-- Dentro da div game-controls -->
+                    <div class="game-controls">
+                        <input type="number" id="user-guess" placeholder="Digite seu palpite" min="1">
+                        <button onclick="checkGuess()" class="container__botao">Tentar</button>
+                    </div>
+                </div>
+
+                <!-- Tela de Vitória -->
+                <!-- Tela de Vitória - remover o botão duplicado -->
+                <div id="victory-screen" style="display: none;">
+                    <img src="./img/trophy.png" alt="ícone de um troféu" />
+                    <div class="container__texto">
+                        <h1>Você <span class="container__texto-azul">acertou!</span></h1>
+                        <h2 id="victory-message"></h2>
+                    </div>
+                    <button onclick="reiniciarJogo()" class="container__botao">Jogar Novamente</button>
+                </div>
+
+                <!-- Tela de Recordes -->
+                <div id="high-scores" style="display: none;">
+                    <h1>Melhores Pontuações</h1>
+                    <div id="scores-list"></div>
+                    <button onclick="hideHighScores()" class="container__botao">Voltar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
